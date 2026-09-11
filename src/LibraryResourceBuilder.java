@@ -1,4 +1,5 @@
 public class LibraryResourceBuilder {
+    private static final int DEFAULT_MAX_BORROW_DAYS = 30;
     private String id;
     private String title;
     private String isbn;
@@ -6,7 +7,7 @@ public class LibraryResourceBuilder {
     private String publisher;
     private String publishedDate;
     private String genre;
-    private int maxborrowDays = 14;
+    private int maxborrowDays = DEFAULT_MAX_BORROW_DAYS;
 
     public LibraryResourceBuilder(String id, String title, String author) {
         this.id = id;
@@ -52,7 +53,7 @@ public class LibraryResourceBuilder {
     public LibraryResource build() {
         if (id == null)
             throw new IllegalStateException("id can not be null");
-        if (title == null || title.isBlank()) {
+        if (title == null ) {
             throw new IllegalStateException("Resource Title cannot be null or empty.");
         }
         if (maxborrowDays < 0) {
